@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Line Interface (CLI) vs. Graphical User Interface (GUI)</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        /* Theme */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f0ffff; /* light gray */
+            color: #3d405b; /* Slate Gray Text */
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        header { 
+            text-align: center;
+            padding: 20px;
+            background-color: #8FBC8F; /* Green */
+            color: #ffffff; /* White Text */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #8FBC8F; /* Dark Green */
+        }
+        p {
+	    margin: 10px 0 20px;
+            color: #6b705c; /* Earth Green */
+        }
+        /* Particles Background */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #6b705c; /* Teal */
+            cursor: pointer;
+            z-index: 10;
+        }
+        .nav-arrow:hover {
+            color: #8FBC8F; /* Light Green */
+        }
+        .nav-left {
+            left: -20px;
+        }
+        .nav-right {
+            right: -20px;
+        }
+        /* Example Cards */
+        .example-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+            margin: 100px 0; /* Added spacing between sections */
+            position: relative;
+        }
+        .example {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            width: 95%; /* Larger graphics */
+        }
+        .example img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .example.active {
+            opacity: 1;
+        }
+        /* Refined Pros & Cons Table */
+        table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #f0fff0; /* Faded Green */
+            color: #6b705c; /* Green */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        table th, table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #8FBC8F; /* Green */
+            color: #6b705c; /* Green */
+        }
+        table td:first-child {
+            font-weight: bold;
+            background-color: #8FBC8F; /* Green */
+	    color: #ffffff
+        }
+	table tr:first-child th {
+            color: #ffffff; 
+        }
+        table tr:first-child th:first-child {
+            border-top-left-radius: 10px;
+        }
+        table tr:first-child th:last-child {
+            border-top-right-radius: 10px;
+        }
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 10px;
+        }
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #8FBC8F; /* Light Green */
+            color: #ffffff; /* White Text */
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <header>
+        <h1>Command Line Interface (CLI) vs. Graphical User Interface (GUI)</h1>
+    </header>
+
+    <main>
+        <!-- Introduction -->
+        <section>
+            <h2>Introduction</h2>
+            <p>Use the arrows below to explore the example interfaces of SPSS, RStudio, and Python.</p>
+        </section>
+
+        <!-- Spacing Adjustment -->
+        <div style="height: 80px;"></div>
+
+        <!-- Example Cards Section -->
+        <section class="example-container">
+            <div class="nav-arrow nav-left" onclick="navigate('prev')">&lt;</div>
+            <div class="nav-arrow nav-right" onclick="navigate('next')">&gt;</div>
+
+            <div id="example-spss" class="example active">
+                <img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/df2963f4-aafa-4072-a45c-f502bf0750a5.png?auto=format&q=50" alt="SPSS Example">
+                <p>SPSS (GUI): Visual menus and options for statistical analysis.</p>
+            </div>
+            <div id="example-rstudio" class="example">
+                <img src="https://posit.co/wp-content/uploads/2022/10/thumbnail-3.jpg" alt="RStudio Example">
+                <p>RStudio (CLI): Command-line interface with some limitation in data modality .</p>
+            </div>
+            <div id="example-python" class="example">
+                <img src="https://wingware.com/images/news/2019-07-25/wing71-screenshot.jpg" alt="Python Example">
+                <p>Python (CLI): Highly flexible programming interface for custom solutions.</p>
+            </div>
+        </section>
+
+ 	<!-- Spacing Adjustment -->
+        <div style="height: 40px;"></div>
+
+         <!-- Pros & Cons Table -->
+        <section>
+            <h2>Pros & Cons</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>SPSS (GUI)</th>
+                        <th>R (CLI)</th>
+                        <th>Python (CLI)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ease of Use</td>
+                        <td>✅ Intuitive</td>
+                        <td>✅ Moderate </td>
+                        <td>❌ Demanded </td>
+                    </tr>
+		    <tr>
+                        <td>Learning Curve</td>
+                        <td>✅ Minimal</td>
+                        <td>❌ Steeper</td>
+                        <td>❌ Steep</td>
+                    </tr>
+                    <tr>
+                        <td>Flexibility</td>
+                        <td>❌ Limited</td>
+                        <td>✅ Flexible</td>
+                        <td>✅ Highly Flexible</td>
+                    </tr>
+                    <tr>
+                        <td>Efficiency</td>
+                        <td>❌ Manually</td>
+                        <td>✅ Automated</td>
+                        <td>✅ Automated</td>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td>❌ Paid</td>
+                        <td>✅ Free</td>
+                        <td>✅ Free</td>
+                    </tr>
+                    <tr>
+                        <td>Community</td>
+                        <td>❌ Basic Statistic</td>
+                        <td>✅ Academic</td>
+                        <td>✅ Diverse</td>
+                    </tr>
+		    <tr>
+                        <td>Validation</td>
+                        <td>✅ Validated</td>
+                        <td>❓ Partially Validated</td>
+                        <td>❓ Partially Validated</td>
+                    </tr>
+		    <tr>
+                        <td>Error Transparency</td>
+                        <td>❌ Low</td>
+                        <td>✅ Moderate</td>
+                        <td>✅ High</td>
+                    </tr>
+
+                    <tr>
+                        <td>Best Use Case</td>
+                        <td>✅ Classic Stats</td>
+                        <td>✅ Advanced Stats</td>
+                        <td>✅ Machine Learning</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Created by Nefertary Li | Inspired by Github Copilot</p>
+    </footer>
+
+    <script>
+        /* Particles.js Configuration */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 50,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#81b29a"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 5,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#81b29a",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                }
+            }
+        });
+
+        let currentExample = 0;
+        const examples = document.querySelectorAll('.example');
+
+        function navigate(direction) {
+            examples[currentExample].classList.remove('active');
+
+            if (direction === 'next') {
+                currentExample = (currentExample + 1) % examples.length;
+            } else {
+                currentExample = (currentExample - 1 + examples.length) % examples.length;
+            }
+
+            examples[currentExample].classList.add('active');
+        }
+    </script>
+</body>
+</html>
